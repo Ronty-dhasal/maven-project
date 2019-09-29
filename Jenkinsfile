@@ -1,35 +1,28 @@
-pipeline
-{
-
-agent any
+pipeline {
+    agent any
 
 
-stages
-{
-
-stage ('scm checkout'){
-git 'https://github.com/Ronty-dhasal/maven-project.git'
-
-
-}
-}
-{
-
-stage ('Test Stage') {
-
-
+    stages 
+    {  
+        
+        stage ('SCM Checkout') {
+          git 'https://github.com/prakashk0301/maven-project'
+         }
+    
+    }
+    {
+                            
+        
+        stage ('Testing Stage') {
 
 
-steps {
-	withMaven(maven: 'LocalMaven') 
-{
- sh 'mvn test'
-
-}
-
-}
-
-}
-
-}
-}
+            steps {
+                withMaven(maven : 'LocalMaven')
+                {
+                    sh 'mvn test'
+                }
+                  }
+                                 
+        }
+		}
+		}
