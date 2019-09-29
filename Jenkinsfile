@@ -32,13 +32,13 @@ pipeline {
 		}
 		}
 		}
-		stage ('Testing Stage') {
+		stage ('Install Stage') {
 
 
             steps {
                 withMaven(maven : 'Local_Maven')
                 {
-                    sh 'mvn test'
+                    sh 'mvn install'
                 }
                   }
                                  
