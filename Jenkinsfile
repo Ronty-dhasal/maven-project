@@ -51,6 +51,14 @@ steps {
     sh 'scp -o StrictHostKeyChecking=no */target/*.war ec2-user@172.31.33.198:/var/lib/tomcat/webapps'
   }
 }
+		    
+		    stage ('Invoke Sonarqube validation') {
+		steps {
+		withSonarQubeEnv{'sonar'}
+		{
+		sh 'clean install sonar:sonar'
+		}
+		}
 	    }
 		}
 		}
